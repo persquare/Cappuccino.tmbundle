@@ -21,6 +21,73 @@
 	<array>
 		<dict>
 			<key>begin</key>
+			<string>^\s*@(import)\b</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include.objj</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=(?://|/\*))|$</string>
+			<key>name</key>
+			<string>meta.preprocessor.objj.include</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.objj</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>"</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.objj</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.double.include.objj</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>&lt;</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.objj</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>&gt;</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.objj</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.other.lt-gt.include.objj</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
 			<string>((@)(interface|protocol))(?!.+;)\s+([_A-Za-z][_A-Za-z0-9]*)\s*((:)(?:\s*)([_A-Za-z][_A-Za-z0-9]*))?(\s|\n)?</string>
 			<key>captures</key>
 			<dict>
