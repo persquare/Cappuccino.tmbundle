@@ -37,15 +37,25 @@ print "- (void)#{e_sn(response)}(id)sender
 	<string>word</string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>isDisabled</key>
+	<true/>
 	<key>keyEquivalent</key>
 	<string>^D</string>
 	<key>name</key>
 	<string>Load Delegate Window</string>
-	<key>output</key>
-	<string>insertAsSnippet</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>snippet</string>
+	<key>outputLocation</key>
+	<string>replaceSelection</string>
 	<key>scope</key>
 	<string>source.js.objj</string>
 	<key>uuid</key>
 	<string>4FC07066-67A9-4792-93F7-F83EA869A499</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
