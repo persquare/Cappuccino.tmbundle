@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>@interface ${1:${TM_FILENAME/\...*$|(^$)/(?1:object)/}} : ${2:CPObject}
+	<string>@implementation ${1:${TM_FILENAME/\...*$|(^$)/(?1:object)/}} : ${2:CPObject}
 {
 }
 

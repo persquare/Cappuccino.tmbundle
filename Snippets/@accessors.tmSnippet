@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>@import &lt;${1|Foundation,AppKit,|}/$1.j&gt;</string>
+	<string>@accessors(${1:getter=${2:foo}, }${3:setter=set${4:${2/./\u$0/}}:});${0}</string>
 	<key>name</key>
-	<string>import &lt;…&gt;</string>
+	<string>@accessors</string>
 	<key>scope</key>
 	<string>source.js.objj</string>
 	<key>tabTrigger</key>
-	<string>imp</string>
+	<string>acc</string>
 	<key>uuid</key>
-	<string>BE0553C0-B73B-4160-814C-840FC2B84C32</string>
+	<string>31829F1F-C604-4FE8-9693-6545977C685C</string>
 </dict>
 </plist>
