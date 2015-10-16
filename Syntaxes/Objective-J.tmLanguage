@@ -358,10 +358,8 @@
 			<string>storage.modifier.js.objj</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>\b(YES|NO|Nil|nil)\b</string>
-			<key>name</key>
-			<string>constant.language.js.objj</string>
+			<key>include</key>
+			<string>#language_constants</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -553,6 +551,13 @@
 			<string>^\s*}</string>
 			<key>name</key>
 			<string>meta.scope.instance.variables.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+			</array>
 		</dict>
 		<key>language_constants</key>
 		<dict>
