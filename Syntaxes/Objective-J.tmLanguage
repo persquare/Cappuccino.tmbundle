@@ -468,6 +468,10 @@
 						</dict>
 						<dict>
 							<key>include</key>
+							<string>#plain_argument</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#special_variables</string>
 						</dict>
 						<dict>
@@ -644,6 +648,13 @@
 					<string>#comment</string>
 				</dict>
 			</array>
+		</dict>
+		<key>plain_argument</key>
+		<dict>
+			<key>match</key>
+			<string>\b\w+\b</string>
+			<key>name</key>
+			<string>meta.function-call.arguments</string>
 		</dict>
 		<key>pragma_mark</key>
 		<dict>
