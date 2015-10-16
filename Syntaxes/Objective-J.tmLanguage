@@ -468,11 +468,15 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#plain_argument</string>
+							<string>#special_variables</string>
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#special_variables</string>
+							<string>#language_constants</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#plain_argument</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -536,6 +540,13 @@
 					</array>
 				</dict>
 			</array>
+		</dict>
+		<key>language_constants</key>
+		<dict>
+			<key>match</key>
+			<string>\b(YES|NO|Nil|nil)\b</string>
+			<key>name</key>
+			<string>constant.language.js.objj</string>
 		</dict>
 		<key>method</key>
 		<dict>
