@@ -185,6 +185,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#ivars_section</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#special_variables</string>
 				</dict>
 				<dict>
@@ -540,6 +544,15 @@
 					</array>
 				</dict>
 			</array>
+		</dict>
+		<key>ivars_section</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*{</string>
+			<key>end</key>
+			<string>^\s*}</string>
+			<key>name</key>
+			<string>meta.scope.instance.variables.js.objj</string>
 		</dict>
 		<key>language_constants</key>
 		<dict>
