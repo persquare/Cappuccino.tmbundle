@@ -150,60 +150,8 @@
 			</array>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>((@)(implementation))\s+([_A-Za-z][_A-Za-z0-9]*)\s*(?::\s*([_A-Za-z][_A-Za-z0-9]*))?</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.js.objj</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.storage.type.js.objj</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.type.class.js.objj</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.inherited-class.js.objj</string>
-				</dict>
-			</dict>
-			<key>contentName</key>
-			<string>meta.scope.implementation.js.objj</string>
-			<key>end</key>
-			<string>((@)end)\b</string>
-			<key>name</key>
-			<string>meta.implementation.js.objj</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#ivars_section</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#special_variables</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#method</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>$base</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#pragma_mark</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#implementation</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -325,7 +273,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(IBOutlet|IBAction|BOOL|SEL|id(?!\s?&lt;)|unichar|IMP|Class)\b</string>
+			<string>\b(outlet|action|BOOL|SEL|id(?!\s?&lt;)|unichar|IMP|Class)\b</string>
 			<key>name</key>
 			<string>storage.type.js.objj</string>
 		</dict>
@@ -543,10 +491,155 @@
 				</dict>
 			</array>
 		</dict>
+		<key>declaration</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.class.js.objj</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\b([_A-Z][_A-Za-z0-9]*)\s+([_a-z][_A-Za-z0-9]*)\b</string>
+			<key>name</key>
+			<string>meta.foo</string>
+		</dict>
+		<key>implementation</key>
+		<dict>
+			<key>begin</key>
+			<string>(?=(?:@implementation\s+))</string>
+			<key>comment</key>
+			<string>Need separate for Categories?</string>
+			<key>contentName</key>
+			<string>meta.scope.implementation.js.objj</string>
+			<key>end</key>
+			<string>((@)end)\b</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.js.objj</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.storage.type.js.objj</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.implementation.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#ivars_section</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#special_variables</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#method</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$base</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#pragma_mark</string>
+				</dict>
+			</array>
+		</dict>
+		<key>implementation_original</key>
+		<dict>
+			<key>begin</key>
+			<string>((@)(implementation))\s+([_A-Za-z][_A-Za-z0-9]*)\s*(?::\s*([_A-Za-z][_A-Za-z0-9]*))?</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.js.objj</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.storage.type.js.objj</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.class.js.objj</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class.js.objj</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.scope.implementation.js.objj</string>
+			<key>end</key>
+			<string>((@)end)\b</string>
+			<key>name</key>
+			<string>meta.implementation.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#special_variables</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#method</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$base</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#pragma_mark</string>
+				</dict>
+			</array>
+		</dict>
 		<key>ivars_section</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*{</string>
+			<string>((@)(implementation))\s+([_A-Za-z][_A-Za-z0-9]*)\s*(?::\s*([_A-Za-z][_A-Za-z0-9]*))?</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.js.objj</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.storage.type.js.objj</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.class.js.objj</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class.js.objj</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>^\s*}</string>
 			<key>name</key>
@@ -556,6 +649,22 @@
 				<dict>
 					<key>include</key>
 					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#outlet</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#declaration</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#accessor</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#semicolon</string>
 				</dict>
 			</array>
 		</dict>
@@ -677,6 +786,13 @@
 					<string>#comment</string>
 				</dict>
 			</array>
+		</dict>
+		<key>outlet</key>
+		<dict>
+			<key>match</key>
+			<string>@outlet</string>
+			<key>name</key>
+			<string>entity.name.function.decorator</string>
 		</dict>
 		<key>plain_argument</key>
 		<dict>
