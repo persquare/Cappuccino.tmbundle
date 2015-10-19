@@ -20,290 +20,44 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>begin</key>
-			<string>^\s*@(import)\b</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.import.include.objj</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(?=(?://|/\*))|$</string>
-			<key>name</key>
-			<string>meta.preprocessor.objj.include</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>"</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.begin.objj</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>"</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.end.objj</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>string.quoted.double.include.objj</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>&lt;</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.begin.objj</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>&gt;</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.end.objj</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>string.quoted.other.lt-gt.include.objj</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#import</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>((@)(interface|protocol))(?!.+;)\s+([_A-Za-z][_A-Za-z0-9]*)\s*((:)(?:\s*)([_A-Za-z][_A-Za-z0-9]*))?(\s|\n)?</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.js.objj</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.storage.type.js.objj</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.type.js.objj</string>
-				</dict>
-				<key>6</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.entity.other.inherited-class.js.objj</string>
-				</dict>
-				<key>7</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.inherited-class.js.objj</string>
-				</dict>
-				<key>8</key>
-				<dict>
-					<key>name</key>
-					<string>meta.divider.js.objj</string>
-				</dict>
-				<key>9</key>
-				<dict>
-					<key>name</key>
-					<string>meta.inherited-class.js.objj</string>
-				</dict>
-			</dict>
-			<key>contentName</key>
-			<string>meta.scope.interface.js.objj</string>
-			<key>end</key>
-			<string>((@)end)\b</string>
-			<key>name</key>
-			<string>meta.interface-or-protocol.js.objj</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#protocol_list</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#method</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>$base</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#interface_or_protocol</string>
 		</dict>
 		<dict>
 			<key>include</key>
 			<string>#implementation</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>@"</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.js.objj</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>"</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.js.objj</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>string.quoted.double.js.objj</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>\\(\\|[abefnrtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-zA-Z0-9]+)</string>
-					<key>name</key>
-					<string>constant.character.escape.js.objj</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\\.</string>
-					<key>name</key>
-					<string>invalid.illegal.unknown-escape.js.objj</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#string_objc</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>\b(id)\s*(?=&lt;)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.js.objj</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(?&lt;=&gt;)</string>
-			<key>name</key>
-			<string>meta.id-with-protocol.js.objj</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#protocol_list</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#id_with_protocol</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>\b(CP_DURING|CP_HANDLER|CP_ENDHANDLER)\b</string>
-			<key>name</key>
-			<string>keyword.control.macro.js.objj</string>
+			<key>include</key>
+			<string>#exception_macros</string>
 		</dict>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.keyword.js.objj</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(@)(try|catch|finally|throw)\b</string>
-			<key>name</key>
-			<string>keyword.control.exception.js.objj</string>
+			<key>include</key>
+			<string>#exception_directives</string>
 		</dict>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.keyword.js.objj</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(@)(synchronized)\b</string>
-			<key>name</key>
-			<string>keyword.control.synchronize.js.objj</string>
+			<key>include</key>
+			<string>#misc_keywords</string>
 		</dict>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.keyword.js.objj</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(@)(defs|encode)\b</string>
-			<key>name</key>
-			<string>keyword.other.js.objj</string>
+			<key>include</key>
+			<string>#storage_type</string>
 		</dict>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>meta.id-type.js.objj</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>\b(outlet|action|BOOL|SEL|id(?!\s?&lt;)|unichar|IMP|Class)\b</string>
-			<key>name</key>
-			<string>storage.type.js.objj</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.storage.type.js.objj</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(@)(class|selector|protocol)\b</string>
-			<key>name</key>
-			<string>storage.type.js.objj</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.storage.modifier.js.objj</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(@)(synchronized|public|private|protected)\b</string>
-			<key>name</key>
-			<string>storage.modifier.js.objj</string>
+			<key>include</key>
+			<string>#misc_storage</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -311,7 +65,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#xtra_cappuccion</string>
+			<string>#xtra_cappuccino</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -473,6 +227,52 @@
 			<key>name</key>
 			<string>meta.foo</string>
 		</dict>
+		<key>exception_macros</key>
+		<dict>
+			<key>match</key>
+			<string>\b(CP_DURING|CP_HANDLER|CP_ENDHANDLER)\b</string>
+			<key>name</key>
+			<string>keyword.control.macro.js.objj</string>
+		</dict>
+		<key>excepttion_directives</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.js.objj</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(@)(try|catch|finally|throw)\b</string>
+			<key>name</key>
+			<string>keyword.control.exception.js.objj</string>
+		</dict>
+		<key>id_with_protocol</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(id)\s*(?=&lt;)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.js.objj</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?&lt;=&gt;)</string>
+			<key>name</key>
+			<string>meta.id-with-protocol.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#protocol_list</string>
+				</dict>
+			</array>
+		</dict>
 		<key>implementation</key>
 		<dict>
 			<key>begin</key>
@@ -572,6 +372,138 @@
 				<dict>
 					<key>include</key>
 					<string>#pragma_mark</string>
+				</dict>
+			</array>
+		</dict>
+		<key>import</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*@(import)\b</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.import.include.objj</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=(?://|/\*))|$</string>
+			<key>name</key>
+			<string>meta.preprocessor.objj.include</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.objj</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>"</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.objj</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.double.include.objj</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>&lt;</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.objj</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>&gt;</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.objj</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.other.lt-gt.include.objj</string>
+				</dict>
+			</array>
+		</dict>
+		<key>interface_or_protocol</key>
+		<dict>
+			<key>begin</key>
+			<string>((@)(interface|protocol))(?!.+;)\s+([_A-Za-z][_A-Za-z0-9]*)\s*((:)(?:\s*)([_A-Za-z][_A-Za-z0-9]*))?(\s|\n)?</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.js.objj</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.storage.type.js.objj</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.js.objj</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.other.inherited-class.js.objj</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class.js.objj</string>
+				</dict>
+				<key>8</key>
+				<dict>
+					<key>name</key>
+					<string>meta.divider.js.objj</string>
+				</dict>
+				<key>9</key>
+				<dict>
+					<key>name</key>
+					<string>meta.inherited-class.js.objj</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.scope.interface.js.objj</string>
+			<key>end</key>
+			<string>((@)end)\b</string>
+			<key>name</key>
+			<string>meta.interface-or-protocol.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#protocol_list</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#method</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$base</string>
 				</dict>
 			</array>
 		</dict>
@@ -749,6 +681,74 @@
 				</dict>
 			</array>
 		</dict>
+		<key>misc_keywords</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.keyword.js.objj</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(@)(synchronized)\b</string>
+					<key>name</key>
+					<string>keyword.control.synchronize.js.objj</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.keyword.js.objj</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(@)(defs|encode)\b</string>
+					<key>name</key>
+					<string>keyword.other.js.objj</string>
+				</dict>
+			</array>
+		</dict>
+		<key>misc_storage</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.storage.type.js.objj</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(@)(class|selector|protocol)\b</string>
+					<key>name</key>
+					<string>storage.type.js.objj</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.storage.modifier.js.objj</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(@)(synchronized|public|private|protected)\b</string>
+					<key>name</key>
+					<string>storage.modifier.js.objj</string>
+				</dict>
+			</array>
+		</dict>
 		<key>outlet</key>
 		<dict>
 			<key>match</key>
@@ -815,12 +815,17 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>\bCP(GlyphStorage|M(utableCopying|enuItem)|C(hangeSpelling|o(ding|pying|lorPicking(Custom|Default)))|T(oolbarItemValidations|ext(Input|AttachmentCell))|I(nputServ(iceProvider|erMouseTracker)|gnoreMisspelledWords)|Obj(CTypeSerializationCallBack|ect)|D(ecimalNumberBehaviors|raggingInfo)|U(serInterfaceValidations|RL(HandleClient|DownloadDelegate|ProtocolClient|AuthenticationChallengeSender))|Validated(ToobarItem|UserInterfaceItem)|Locking)\b</string>
-					<key>name</key>
-					<string>support.other.protocol.js.objj</string>
+					<key>include</key>
+					<string>#protocol_names</string>
 				</dict>
 			</array>
+		</dict>
+		<key>protocol_names</key>
+		<dict>
+			<key>match</key>
+			<string>\bCP(GlyphStorage|M(utableCopying|enuItem)|C(hangeSpelling|o(ding|pying|lorPicking(Custom|Default)))|T(oolbarItemValidations|ext(Input|AttachmentCell))|I(nputServ(iceProvider|erMouseTracker)|gnoreMisspelledWords)|Obj(CTypeSerializationCallBack|ect)|D(ecimalNumberBehaviors|raggingInfo)|U(serInterfaceValidations|RL(HandleClient|DownloadDelegate|ProtocolClient|AuthenticationChallengeSender))|Validated(ToobarItem|UserInterfaceItem)|Locking)\b</string>
+			<key>name</key>
+			<string>support.other.protocol.js.objj</string>
 		</dict>
 		<key>protocol_type_qualifier</key>
 		<dict>
@@ -844,6 +849,66 @@
 					<string>\b(self|super)\b</string>
 					<key>name</key>
 					<string>variable.language.js.objj</string>
+				</dict>
+			</array>
+		</dict>
+		<key>storage_type</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>meta.id-type.js.objj</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(outlet|action|BOOL|SEL|id(?!\s?&lt;)|unichar|IMP|Class)\b</string>
+					<key>name</key>
+					<string>storage.type.js.objj</string>
+				</dict>
+			</array>
+		</dict>
+		<key>string_objc</key>
+		<dict>
+			<key>begin</key>
+			<string>@"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.js.objj</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>"</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.js.objj</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.double.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\(\\|[abefnrtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-zA-Z0-9]+)</string>
+					<key>name</key>
+					<string>constant.character.escape.js.objj</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\\.</string>
+					<key>name</key>
+					<string>invalid.illegal.unknown-escape.js.objj</string>
 				</dict>
 			</array>
 		</dict>
