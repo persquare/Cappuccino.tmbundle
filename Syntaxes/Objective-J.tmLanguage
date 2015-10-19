@@ -78,6 +78,26 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>accessor</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.decorator</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.option</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>entity.name.function.accessor</string>
+			<key>match</key>
+			<string>((@)accessors)(\(.*?(?:\b(readonly|copy))?\))?</string>
+		</dict>
 		<key>bracketed_content</key>
 		<dict>
 			<key>begin</key>
@@ -165,45 +185,55 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>/\*</string>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.js.objj</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\*/</string>
-					<key>name</key>
-					<string>comment.block.js.objj</string>
+					<key>include</key>
+					<string>#comment_block</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>//</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.js.objj</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>$\n?</string>
+					<key>include</key>
+					<string>#comment_line</string>
+				</dict>
+			</array>
+		</dict>
+		<key>comment_block</key>
+		<dict>
+			<key>begin</key>
+			<string>/\*</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
 					<key>name</key>
-					<string>comment.line.double-slash.js.objj</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>match</key>
-							<string>(?&gt;\\\s*\n)</string>
-							<key>name</key>
-							<string>punctuation.separator.continuation.js.objj</string>
-						</dict>
-					</array>
+					<string>punctuation.definition.comment.js.objj</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\*/</string>
+			<key>name</key>
+			<string>comment.block.js.objj</string>
+		</dict>
+		<key>comment_line</key>
+		<dict>
+			<key>begin</key>
+			<string>//</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.js.objj</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$\n?</string>
+			<key>name</key>
+			<string>comment.line.double-slash.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&gt;\\\s*\n)</string>
+					<key>name</key>
+					<string>punctuation.separator.continuation.js.objj</string>
 				</dict>
 			</array>
 		</dict>
@@ -227,14 +257,7 @@
 			<key>name</key>
 			<string>meta.foo</string>
 		</dict>
-		<key>exception_macros</key>
-		<dict>
-			<key>match</key>
-			<string>\b(CP_DURING|CP_HANDLER|CP_ENDHANDLER)\b</string>
-			<key>name</key>
-			<string>keyword.control.macro.js.objj</string>
-		</dict>
-		<key>excepttion_directives</key>
+		<key>exception_directives</key>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -248,6 +271,13 @@
 			<string>(@)(try|catch|finally|throw)\b</string>
 			<key>name</key>
 			<string>keyword.control.exception.js.objj</string>
+		</dict>
+		<key>exception_macros</key>
+		<dict>
+			<key>match</key>
+			<string>\b(CP_DURING|CP_HANDLER|CP_ENDHANDLER)\b</string>
+			<key>name</key>
+			<string>keyword.control.macro.js.objj</string>
 		</dict>
 		<key>id_with_protocol</key>
 		<dict>
@@ -507,6 +537,15 @@
 				</dict>
 			</array>
 		</dict>
+		<key>invalid</key>
+		<dict>
+			<key>comment</key>
+			<string>Use to indicate what has not been gobbled up in line...</string>
+			<key>match</key>
+			<string>.+</string>
+			<key>name</key>
+			<string>invalid</string>
+		</dict>
 		<key>ivars_section</key>
 		<dict>
 			<key>begin</key>
@@ -557,8 +596,12 @@
 					<string>#accessor</string>
 				</dict>
 				<dict>
-					<key>include</key>
+					<key>comment</key>
 					<string>#semicolon</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>#invalid</string>
 				</dict>
 			</array>
 		</dict>
