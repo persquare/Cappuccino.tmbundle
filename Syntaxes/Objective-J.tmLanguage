@@ -180,6 +180,67 @@
 				</dict>
 			</array>
 		</dict>
+		<key>class_category</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.scope.begin.js.objj</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class.js.objj</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.scope.end.js.objj</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(\()\s*([_A-Za-z][_A-Za-z0-9]*)\s(\))</string>
+			<key>name</key>
+			<string>invalid</string>
+		</dict>
+		<key>class_specifier</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.storage.type.js.objj</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.js.objj</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.class.js.objj</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>((@)(implementation))\s+([_A-Za-z][_A-Za-z0-9]*)\b</string>
+		</dict>
+		<key>class_superclass</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class.js.objj</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\s*:\s*([_A-Za-z][_A-Za-z0-9]*)</string>
+		</dict>
 		<key>comment</key>
 		<dict>
 			<key>patterns</key>
@@ -312,7 +373,7 @@
 			<key>contentName</key>
 			<string>meta.scope.implementation.js.objj</string>
 			<key>end</key>
-			<string>((@)end)\b</string>
+			<string>}|(?=\+|-)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -332,15 +393,27 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#class_specifier</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#class_superclass</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#protocol_list</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#ivars_section</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#special_variables</string>
+					<string>#method</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#method</string>
+					<string>#special_variables</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -549,7 +622,7 @@
 		<key>ivars_section</key>
 		<dict>
 			<key>begin</key>
-			<string>((@)(implementation))\s+([_A-Za-z][_A-Za-z0-9]*)\s*(?::\s*([_A-Za-z][_A-Za-z0-9]*))?</string>
+			<string>{</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
