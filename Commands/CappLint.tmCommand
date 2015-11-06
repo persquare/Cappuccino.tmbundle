@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>#!/bin/bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+capp_lint="${CAPP_LINT-capp_lint}"
+
+#FIXME: if capp_lint is undefined, show some help...
+
+$capp_lint --format HTML --basedir $TM_DIRECTORY $TM_FILENAME</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>@;</string>
+	<key>name</key>
+	<string>CappLint</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>scope</key>
+	<string>source.js.objj</string>
+	<key>uuid</key>
+	<string>4E4C0438-DBAF-411C-9C3E-88BD3D1DED65</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
