@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>/*
+ *  ${TM_FILENAME}
+ *  `basename ${TM_PROJECT_DIRECTORY}`
+ *
+ *  Created by ${TM_FULLNAME} on `date +"%Y-%m-%d"`.
+ *  Copyright ${TM_ORGANIZATION} `date +"%Y"`. All rights reserved.
+*/
+
+@import &lt;Foundation/Foundation.j&gt;
+@import &lt;AppKit/AppKit.j&gt;
+
+@implementation `basename -s ".j" ${TM_FILENAME}` : CPView
+{
+    ${0}
+}
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code here.
+    }
+    return self;
+}
+
+- (void)drawRect:(CPRect)aRect {
+    // Drawing code here.
+}
+
+@end</string>
+	<key>name</key>
+	<string>CPView Subclass</string>
+	<key>scope</key>
+	<string>source.js.objj</string>
+	<key>tabTrigger</key>
+	<string>cpv</string>
+	<key>uuid</key>
+	<string>8EB587E0-D6DD-4ACC-858C-1A676D643FF5</string>
+</dict>
+</plist>

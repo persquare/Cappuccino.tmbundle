@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>/*
+ *  ${TM_FILENAME}
+ *  `basename ${TM_PROJECT_DIRECTORY}`
+ *
+ *  Created by ${TM_FULLNAME} on `date +"%Y-%m-%d"`.
+ *  Copyright ${TM_ORGANIZATION} `date +"%Y"`. All rights reserved.
+*/
+
+@import &lt;Foundation/Foundation.j&gt;
+@import &lt;AppKit/CPDocument.j&gt;
+
+@implementation `basename -s ".j" ${TM_FILENAME}` : CPDocument
+{
+    $0
+}
+
+- (CPString)windowCibName
+{
+	// Implement this to return a nib to load OR implement -makeWindowControllers to manually create your controllers.
+    return @"`basename -s ".j" ${TM_FILENAME}`";
+}
+
+- (CPData)dataOfType:(CPString)typeName error:(/*{*/CPError/*}*/)outError
+{
+    // Insert code here to write your document to data of the specified type. If the given outError != NULL, ensure that you set *outError when returning nil.
+    // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
+
+    return nil;
+}
+
+- (void)readFromData:(CPData)data ofType:(CPString)typeName error:(/*{*/CPError/*}*/)outError
+{
+    // Insert code here to read your document from the given data of the specified type.  If the given outError != NULL, ensure that you set *outError when returning NO.
+    // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead. 
+        
+    return YES;
+}
+
+@end</string>
+	<key>name</key>
+	<string>CPDocument Subclass</string>
+	<key>scope</key>
+	<string>source.js.objj</string>
+	<key>tabTrigger</key>
+	<string>cpd</string>
+	<key>uuid</key>
+	<string>276739C4-5D3F-45E0-9D2D-333997985E71</string>
+</dict>
+</plist>
