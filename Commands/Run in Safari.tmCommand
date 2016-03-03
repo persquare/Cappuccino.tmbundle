@@ -7,7 +7,7 @@
 	<key>command</key>
 	<string>#!/bin/sh
 
-open -f -a Safari ${TM_DIRECTORY}/index-debug.html</string>
+open -a Safari ${TM_DIRECTORY}/index-debug.html</string>
 	<key>input</key>
 	<string>none</string>
 	<key>inputFormat</key>
