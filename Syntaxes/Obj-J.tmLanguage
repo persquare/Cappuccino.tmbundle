@@ -484,6 +484,12 @@
 					<string>entity.name.function.name-of-parameter.js.objj</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>\b\w+\s*(?={|$)</string>
+					<key>name</key>
+					<string>entity.name.function.js.objj</string>
+				</dict>
+				<dict>
 					<key>begin</key>
 					<string>(:)\s*(\()</string>
 					<key>beginCaptures</key>
