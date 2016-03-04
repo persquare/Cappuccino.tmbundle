@@ -4,7 +4,6 @@
 <dict>
 	<key>fileTypes</key>
 	<array>
-		<string>j</string>
 		<string>J</string>
 	</array>
 	<key>foldingStartMarker</key>
@@ -15,6 +14,8 @@
 	</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}|^@end\b</string>
+	<key>isDisabled</key>
+	<true/>
 	<key>name</key>
 	<string>Objective-J</string>
 	<key>patterns</key>
@@ -296,6 +297,26 @@
 				</dict>
 			</array>
 		</dict>
+		<key>curly_block</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>end</key>
+			<string>\}</string>
+			<key>name</key>
+			<string>meta.curly_bracketed.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#bracketed_content</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
+				</dict>
+			</array>
+		</dict>
 		<key>declaration</key>
 		<dict>
 			<key>captures</key>
@@ -371,7 +392,7 @@
 			<key>contentName</key>
 			<string>meta.scope.implementation.js.objj</string>
 			<key>end</key>
-			<string>}|(?=\+|-)</string>
+			<string>(?=(@)end)\b</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -415,14 +436,18 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#curly_block</string>
+				</dict>
+				<dict>
+					<key>comment</key>
 					<string>#special_variables</string>
 				</dict>
 				<dict>
-					<key>include</key>
+					<key>comment</key>
 					<string>$base</string>
 				</dict>
 				<dict>
-					<key>include</key>
+					<key>comment</key>
 					<string>#pragma_mark</string>
 				</dict>
 			</array>
@@ -908,35 +933,23 @@
 		</dict>
 		<key>protocol_list</key>
 		<dict>
-			<key>begin</key>
-			<string>(&lt;)</string>
-			<key>beginCaptures</key>
+			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.scope.begin.js.objj</string>
 				</dict>
-			</dict>
-			<key>end</key>
-			<string>(&gt;)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
+				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.scope.end.js.objj</string>
 				</dict>
 			</dict>
+			<key>match</key>
+			<string>(&lt;)(?:[a-zA-Z][a-zA-Z0-9_]+[,\s]*)(&gt;)</string>
 			<key>name</key>
 			<string>meta.protocol-list.js.objj</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#protocol_names</string>
-				</dict>
-			</array>
 		</dict>
 		<key>protocol_names</key>
 		<dict>
