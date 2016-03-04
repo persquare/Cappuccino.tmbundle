@@ -129,7 +129,7 @@
 			<key>end</key>
 			<string>\s*}</string>
 			<key>name</key>
-			<string>markup.raw.block</string>
+			<string>meta.code.block</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -321,15 +321,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>ivars_decl</key>
-		<dict>
-			<key>begin</key>
-			<string>^\s*{</string>
-			<key>end</key>
-			<string>^\s*}</string>
-			<key>name</key>
-			<string>invalid</string>
-		</dict>
 		<key>language_constants</key>
 		<dict>
 			<key>match</key>
@@ -340,9 +331,27 @@
 		<key>message</key>
 		<dict>
 			<key>begin</key>
-			<string>\[</string>
+			<string>(\[)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.begin.objj</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>\]</string>
+			<string>(\])</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.end.objj</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.bracketed</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -400,9 +409,80 @@
 			<key>end</key>
 			<string>(?=^\s*{)</string>
 			<key>name</key>
-			<string>meta.header</string>
+			<string>meta.method.definition.objj</string>
 			<key>patterns</key>
-			<array/>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(\()</string>
+					<key>end</key>
+					<string>(\))\s*</string>
+					<key>name</key>
+					<string>meta.return-type.js.objj</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b\w+(?=:)</string>
+					<key>name</key>
+					<string>entity.name.function.name-of-parameter.js.objj</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(:)\s*(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.arguments.js.objj</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.type.begin.js.objj</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\))\s*(\w+\b)?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.type.end.js.objj</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.function.js.objj</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.argument.js.objj</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\b\w+\b</string>
+							<key>name</key>
+							<string>meta.argument-type.js.objj</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comment_block</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+			</array>
+		</dict>
+		<key>objj_statement</key>
+		<dict>
+			<key>comment</key>
+			<string>@outlet CSGProgram program @accessors;</string>
 		</dict>
 		<key>plain_argument</key>
 		<dict>
