@@ -33,6 +33,26 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>accessor</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.decorator</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.option</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>entity.name.function.accessor</string>
+			<key>match</key>
+			<string>((@)accessors)(\(.*?(?:\b(readonly|copy))?\))?</string>
+		</dict>
 		<key>class</key>
 		<dict>
 			<key>begin</key>
@@ -134,6 +154,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#objj_statement</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#code_section</string>
 				</dict>
 				<dict>
@@ -153,6 +177,10 @@
 				<dict>
 					<key>include</key>
 					<string>#string_objc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#storage</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -415,10 +443,39 @@
 				<dict>
 					<key>begin</key>
 					<string>(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.type.begin.js.objj</string>
+						</dict>
+					</dict>
 					<key>end</key>
 					<string>(\))\s*</string>
-					<key>name</key>
-					<string>meta.return-type.js.objj</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.type.end.js.objj</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>@action</string>
+							<key>name</key>
+							<string>meta.return-type.special.js.objj</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\b\w+\b</string>
+							<key>name</key>
+							<string>meta.return-type.js.objj</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -483,6 +540,37 @@
 		<dict>
 			<key>comment</key>
 			<string>@outlet CSGProgram program @accessors;</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.decorator.objj</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type.objj</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.objj</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(@outlet)?\s*\b(\w+)\b\s*\b(\w+)\b</string>
+					<key>name</key>
+					<string>meta.ivar.def.objj</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#accessor</string>
+				</dict>
+			</array>
 		</dict>
 		<key>plain_argument</key>
 		<dict>
@@ -506,6 +594,32 @@
 					<string>\b(self|super)\b</string>
 					<key>name</key>
 					<string>variable.language.js.objj</string>
+				</dict>
+			</array>
+		</dict>
+		<key>storage</key>
+		<dict>
+			<key>begin</key>
+			<string>(@)(class|selector|protocol)\b\s*(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.storage.type.js.objj</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))</string>
+			<key>name</key>
+			<string>storage.type.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>[\w:]+</string>
+					<key>name</key>
+					<string>entity.name</string>
 				</dict>
 			</array>
 		</dict>
