@@ -134,7 +134,37 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#code_section</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#code_block</string>
+				</dict>
+			</array>
+		</dict>
+		<key>code_section</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
 					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string_objc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#special_variables</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#language_constants</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#plain_argument</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -143,10 +173,6 @@
 				<dict>
 					<key>include</key>
 					<string>source.js</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code_block</string>
 				</dict>
 			</array>
 		</dict>
@@ -304,44 +330,144 @@
 			<key>name</key>
 			<string>invalid</string>
 		</dict>
+		<key>language_constants</key>
+		<dict>
+			<key>match</key>
+			<string>\b(YES|NO|Nil|nil)\b</string>
+			<key>name</key>
+			<string>constant.language.js.objj</string>
+		</dict>
 		<key>message</key>
 		<dict>
 			<key>begin</key>
 			<string>\[</string>
 			<key>end</key>
 			<string>\]</string>
-			<key>name</key>
-			<string>meta.link.message</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#comment_block</string>
+					<key>begin</key>
+					<string>(?=\w)(?&lt;=[\w\])"] )(\w+(?:(:)|(?=\])))</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.any-method.js.objj</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.arguments.js.objj</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\])</string>
+					<key>name</key>
+					<string>meta.function-call.js.objj</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.separator.arguments.js.objj</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>\b\w+(:)</string>
+							<key>name</key>
+							<string>support.function.any-method.name-of-parameter.js.objj</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#code_section</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#instance</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#message</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>source.js</string>
+					<string>#code_section</string>
 				</dict>
 			</array>
 		</dict>
 		<key>method_decl</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*-</string>
+			<string>^\s*-|\+</string>
 			<key>end</key>
 			<string>(?=^\s*{)</string>
 			<key>name</key>
 			<string>meta.header</string>
 			<key>patterns</key>
 			<array/>
+		</dict>
+		<key>plain_argument</key>
+		<dict>
+			<key>match</key>
+			<string>\b\w+\b</string>
+			<key>name</key>
+			<string>meta.function-call.arguments</string>
+		</dict>
+		<key>special_variables</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\b_cmd\b</string>
+					<key>name</key>
+					<string>variable.other.selector.js.objj</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(self|super)\b</string>
+					<key>name</key>
+					<string>variable.language.js.objj</string>
+				</dict>
+			</array>
+		</dict>
+		<key>string_objc</key>
+		<dict>
+			<key>begin</key>
+			<string>@"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.js.objj</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>"</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.js.objj</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.double.js.objj</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\(\\|[abefnrtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-zA-Z0-9]+)</string>
+					<key>name</key>
+					<string>constant.character.escape.js.objj</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\\.</string>
+					<key>name</key>
+					<string>invalid.illegal.unknown-escape.js.objj</string>
+				</dict>
+			</array>
 		</dict>
 	</dict>
 	<key>scopeName</key>
