@@ -562,7 +562,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(@outlet)?\s*\b(\w+)\b\s*\b(\w+)\b</string>
+					<string>(@outlet)?\s*\b(\w+)\b\s*\b(\w+)\b\s*(?=[;|@])</string>
 					<key>name</key>
 					<string>meta.ivar.def.objj</string>
 				</dict>
