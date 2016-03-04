@@ -53,6 +53,36 @@
 			<key>match</key>
 			<string>((@)accessors)(\(.*?(?:\b(readonly|copy))?\))?</string>
 		</dict>
+		<key>category_decl</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class.js.objj</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.scope.begin.js.objj</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.scope.end.js.objj</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([a-zA-Z][a-zA-Z0-9_]+)\s*(\()((?:[a-zA-Z][a-zA-Z0-9_]+\s*,?\s*)+)(\))</string>
+			<key>name</key>
+			<string>meta.category.objj</string>
+		</dict>
 		<key>class</key>
 		<dict>
 			<key>begin</key>
@@ -96,6 +126,10 @@
 				<dict>
 					<key>include</key>
 					<string>#class_decl</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#category_decl</string>
 				</dict>
 				<dict>
 					<key>include</key>
